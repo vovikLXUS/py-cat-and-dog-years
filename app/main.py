@@ -18,6 +18,20 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    def calculate_years(age: int, extra_step: int) -> int:
+        # Менше 15 років — 0 людських років
+        if age < 15:
+            return 0
+        
+        # Від 15 до 23 років — 1 людський рік
+        if age < 24:
+            return 1
+        
+        # 24 роки і більше: 
+        # 2 (за перші 24 роки) + залишок, поділений на крок (4 для котів, 5 для собак)
+        return 2 + (age - 24) // extra_step
+
+    return [
+        calculate_years(cat_age, 4),
+        calculate_years(dog_age, 5)
+    ]
